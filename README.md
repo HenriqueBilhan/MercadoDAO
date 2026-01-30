@@ -1,94 +1,47 @@
  # MercadoDAO
-Este projeto foi desenvolvido para demonstrar na prática como funciona a **arquitetura em camadas** utilizando **Java** e **MySQL**, aplicando o padrão **DAO(Data Access Object)**.
+## Projeto DAO com Java
 
-O sistema permite cadastrar alunos e listar alunos armazenando em um banco de dados.
-
----
-
-## Objetivo do Projeto
-
-- Separar responsabilidades no código
-- Demonstrar a comunicação entre Java e Banco de Dados
-- Aplicar boas práticas como:
-- DAO
-- Model
-- Factory de conexão
-- Evitar SQL Injection
-- Facilitar a manutenção e evolução do sistema
----
-
-## Estrutura do Projeto
-
-<img width="295" height="124" alt="image" src="https://github.com/user-attachments/assets/1dfafcc0-c004-491a-965b-c3460a219da6" />
-
+Este projeto é uma implementação de um padrão de design DAO (Data Access Object) utilizando Java. O objetivo principal foi demonstrar a separação das responsabilidades no acesso a dados e o uso de boas práticas de desenvolvimento, incluindo a proteção contra SQL Injection e a implementação de uma Factory de Conexão.
 
 ---
+## Descrição:
+---
+Este projeto é uma aplicação Java que simula a interação com um banco de dados, utilizando o padrão DAO para separar a lógica de negócio da lógica de acesso aos dados. Além disso, implementamos um mecanismo para prevenir SQL Injection, que é uma das vulnerabilidades mais comuns em sistemas que interagem com bancos de dados.
 
-## Descrição das Camadas
-- Main (app)
+---
+Funcionalidades Implementadas:
 
-Responsável por:
+DAO: O padrão de design DAO foi utilizado para criar uma camada de abstração entre a lógica de negócios e o banco de dados, permitindo maior flexibilidade e manutenção.
 
-Interagir com o usuário via console
+Factory de Conexão: Foi implementada uma Factory de Conexão para centralizar a criação das conexões com o banco de dados, garantindo que as conexões sejam gerenciadas de forma eficiente.
 
-Receber dados
+Prevenção de SQL Injection: O código foi escrito de forma a evitar SQL Injection, utilizando consultas preparadas (Prepared Statements) ao invés de concatenar strings diretamente nas consultas SQL.
 
-Chamar o DAO para salvar e listar alunos
+Estrutura do Projeto
+---
 
-Não contém SQL, apenas regras de fluxo de aplicação
-
-
-- Produto (model)
-
-Representa a tabela alunos do banco de dados
-
-Contém:
-
-Atributos (id, nome)
-
-Construtores
-
-Getters e Setters
+<img width="295" height="124" alt="image" src="https://github.com/user-attachments/assets/4df8476f-6783-421a-bc5f-303f3fdd62ac" />
 
 
-- ProdutoDAO (dao)
 
-Responsável por:
+---
+O projeto é composto pelas seguintes partes principais:
 
-Executar comandos SQL
+- Model: Classe que representa as entidades do banco de dados.
 
-Fazer operações CRUD
+- DAO: Interface e classes de implementação responsáveis pela comunicação com o banco de dados.
 
-Converter dados do banco em objetos Java
+- Factory de Conexão: Classe responsável pela criação e gerenciamento de conexões com o banco de dados.
 
-Métodos:
+- SQL Injection Protection: Utilização de Prepared Statements para garantir a proteção contra ataques de SQL Injection.
 
-cadastrar(Produto produto)
+Tecnologias Utilizadas
 
-listar()
+- Java: Linguagem de programação principal para a implementação da lógica.
 
-- Centraliza toda a lógica de acesso ao banco.
+- JDBC (Java Database Connectivity): Biblioteca usada para conectar o Java ao banco de dados.
 
-- ConnectionFactory (config)
+- MySQL: Banco de dados utilizado na aplicação.
 
-Responsável por:
+- Prepared Statements: Técnica para prevenir SQL Injection ao construir consultas SQL de forma segura.
 
-Criar e fornecer conexões com o banco de dados
-
-Centralizar URL, usuário e senha
-
-- Facilita manutenção e evita repetição de código.
-
-## Importância do Padrão DAO
-
-O padrão DAO (Data Access Object) é importante porque:
-
-Separa regras de negócio do acesso ao banco
-
-Facilita testes
-
-Permite trocar o banco sem alterar o restante do sistema
-
-Torna o código mais organizado e profissional
-
-É amplamente usado no mercado de trabalho
